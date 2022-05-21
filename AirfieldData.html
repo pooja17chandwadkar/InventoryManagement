@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color:white;">
+
+<h1>Airfield Data Viewer</h1>
+<form action="">
+  <select name="Airfield" onchange="GetAirfieldData(this.value,access,'AirFieldDataAccess.php')">
+  <option value="">SELECT AIRFIELD</option>
+  <option value="Alpha Field">Alpha</option>
+  <option value="Beta Field">Beta</option>
+  <option value="Gamma Field">Gamma</option>  
+</select>
+ </form>
+ <div id="OUTPUT"></div>
+ <script>
+  function GetAirfieldData(S,F,FileLocation){
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function(){
+      F(this);
+    }
+
+    xhttp.open("GET",FileLocation + "?Q=" +S);
+    xhttp.send();
+  }
+
+  function access(XMLHREQ){
+    document.getElementById("OUTPUT").innerHTML = XMLHREQ.responseText;
+  }
+
+ </script> 
+
+</body>
+</html>

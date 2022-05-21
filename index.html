@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+<link rel="stylesheet" href="menu.css">
+<h1>Targeting Database</h1>
+<h1>Log In</h1>
+
+<div class="container">
+<div class="main">
+<form id="form_id" method="post" name="myform">
+<label>User Name :</label><br><br>
+<input type="text" name="username" id="username" /><br><br>
+<label>Password :</label><br><br>
+<input type="password" name="password" id="password"/><br><br>
+<input type="button" value="Login" id="submit" onclick="validate()"/>
+</form>
+</div>
+</div>
+
+<script>
+ 
+function validate(){
+                  var username = document.getElementById("username").value;
+                  var password = document.getElementById("password").value;
+                  if ( username == "localhost" && password == "root"){
+                  alert ("Login successfully");
+                  window.location = "mainmenu.html"; // Redirecting to other page.
+                  return false;
+                  }
+                  else{
+                  alert ("Login Unsuccessfully");
+                  window.location = "failedlogin.html"
+                  return false;
+                  }
+}
+
+ </script> 
+
+</body>
+
+
+</html>

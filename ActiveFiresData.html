@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color: white;">
+
+<h1>Active Fire Data Viewer</h1>
+<form action="">
+  <select name="Active" onchange="GetReports(this.value,access,'ActiveFiresDataAccess.php')">
+  <option value="">SELECT ACTIVE FIRES</option>
+  <option value="1">Fire 1</option>
+  <option value="2">Fire 2</option>
+  <option value="3">Fire 3</option>
+  <option value="4">Fire 4</option>
+  <option value="5">Fire 5</option>
+  <option value="6">Fire 6</option>
+</select>
+ </form>
+ <div id="OUTPUT"></div>
+ <script>
+  function GetReports(S,F,FileLocation){
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function(){
+      F(this);
+    }
+
+    xhttp.open("GET",FileLocation + "?Q=" +S);
+    xhttp.send();
+  }
+
+  function access(XMLHREQ){
+    document.getElementById("OUTPUT").innerHTML = XMLHREQ.responseText;
+  }
+
+ </script> 
+
+</body>
+</html>

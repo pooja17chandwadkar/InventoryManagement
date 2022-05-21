@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color: white;">
+
+<h1>Drone Unit Data Viewer</h1>
+<div id="FORM">
+<form action="">
+  <select name="Drones" onchange="GetDroneUnit(this.value,access,'DroneUnitDataAccess.php')">
+  <option value="">SELECT DRONE UNIT</option>
+  <option value="DU-001">Drone Unit 1</option>
+  <option value="DU-002">Drone Unit 2</option>
+  <option value="DU-003">Drone Unit 3</option>
+  <option value="DU-004">Drone Unit 4</option>
+  <option value="DU-005">Drone Unit 5</option>
+  <option value="DU-006">Drone Unit 6</option>
+  <option value="DU-007">Drone Unit 7</option>
+  <option value="DU-008">Drone Unit 8</option>
+  <option value="DU-009">Drone Unit 9</option>
+  <option value="DU-010">Drone Unit 10</option>   -->
+</select>
+ </form>
+ <div>
+ <div id="OUTPUT"></div>
+ <script>
+  function GetDroneUnit(S,F,fileLocation){
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function(){
+      F(this);
+    }
+
+    xhttp.open("GET",fileLocation + "?Q=" + S);
+    xhttp.send();
+  }
+
+  function access(XMLHREQ){
+    document.getElementById("OUTPUT").innerHTML = XMLHREQ.responseText;
+  }
+
+ </script> 
+
+</body>
+</html>

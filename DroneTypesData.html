@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color: white;">
+
+<h1>Drone Type Data Viewer</h1>
+<form action="">
+  <select name="Drones" onchange="GetDroneTypes(this.value,access,'DroneTypeDataAccess.php')">
+  <option value="">SELECT DRONE TYPE</option>
+  <option value="Jaguar">Jaguar</option>
+  <option value="Tiger">Tiger</option>
+  <option value="Leopard">Leopard</option>
+  <option value="Lion">Lion</option>
+</select>
+ </form>
+ <div id="OUTPUT"></div>
+ <script>
+  function GetDroneTypes(S,F,FileLocation){
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function(){
+      F(this);
+    }
+
+    xhttp.open("GET",FileLocation + "?Q=" +S);
+    xhttp.send();
+  }
+
+  function access(XMLHREQ){
+    document.getElementById("OUTPUT").innerHTML = XMLHREQ.responseText;
+  }
+
+ </script> 
+
+</body>
+</html>
